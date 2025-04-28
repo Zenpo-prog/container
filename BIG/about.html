@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Oss</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin-right: 15px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="logo">7Days</div>
+    <nav>
+        <a href="http://127.0.0.1:5500/BIG/first.html">Hem</a>
+    </nav>
+
+
+    <script>
+        // Generera sidans innehåll med JavaScript
+        document.write(`
+            <h1>Om oss</h1>
+            <p>7Day grundades 2025 med visionen att hjälpa människor att skapa en mer balanserad och meningsfull vardag.</p>
+            
+            <p>Vår plattform kombinerar vetenskapligt baserade metoder med praktiska verktyg för att hjälpa dig uppnå dina mål.</p>
+            
+            <p>Vi tror att små, dagliga förbättringar leder till stora, långsiktiga förändringar i livskvalitet och välbefinnande.</p>
+            
+            <p>Vårt team består av experter inom psykologi, träning och produktivitet som brinner för att hjälpa andra.</p>
+            
+            <h2>Vår filosofi</h2>
+            <p>7Days bygger på tre grundpelare: Balans, Kontinuitet och Personlig utveckling.</p>
+            
+            
+            <br>
+            <div>
+                <h3>Frågor?</h3>
+                <textarea id="questionInput" placeholder="Skriv din fråga eller fundering här..."></textarea>
+                <button onclick="submitQuestion()">Skicka</button>
+            </div>
+
+        `);
+         function submitQuestion() {
+            const questionInput = document.getElementById('questionInput');
+            const question = questionInput.value.trim();
+            
+            if (!question) {
+                alert('Vänligen skriv en fråga först!');
+                return;
+            }
+            questionInput.value = ''; // <-- Denna rad tömmer textfältet och återställer placeholder
+            alert('Tack för din fråga! Vi återkommer så snart vi kan.');
+        }
+
+    </script>
+ 
+
+ 
+    <footer>
+        <p>&copy; 2025 7Days. Alla rättigheter förbehållna.</p>
+    </footer>
+</bo
+dy>
+</html>

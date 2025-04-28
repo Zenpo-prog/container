@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Day Forum</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 20px auto; }
+        .logo { color: #3498db; font-size: 24px; font-weight: bold; }
+        input, textarea { width: 100%; margin: 5px 0; padding: 8px; }
+        button { background: #3498db; color: white; border: none; padding: 8px 15px; }
+        .post { margin: 15px 0; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .author { color: #3498db; font-weight: bold; }nav {background: #f8f9fa;padding: 10px;margin-bottom: 20px;}nav a {margin-right: 15px;color: #3498db;font-weight: bold;}
+
+    </style>
+</head>
+<body>
+    <div class="logo">7Day Forum</div>
+    <nav>
+        <a href="http://127.0.0.1:5500/BIG/first.html">Hem</a>
+    </nav>
+
+    <div>
+        <h2>Skriv ett nytt inlägg</h2>
+        <input id="authorName" placeholder="Ditt namn">
+        <textarea id="postContent" placeholder="Ditt inlägg..."></textarea>
+        <button onclick="addPost()">Publicera</button>
+    </div>
+
+    <div id="postsContainer">
+        <h2>Senaste inläggen</h2>
+        <p>Inga inlägg ännu. Var den första att skriva något!</p>
+    </div>
+
+    <script>
+        let posts = []; // Array
+
+        function addPost() {
+            const author = document.getElementById('authorName').value.trim();
+            const content = document.getElementById('postContent').value.trim();
+            
+            if (!author || !content) {
+                alert('Vänligen fyll i både namn och inlägg');
+                return; // Avbryter funktionen om valideringen misslyckas
+            }
+
+            posts.unshift({
+                author,
+                content,
+                date: new Date().toLocaleString() // Skapar en datumsträng i lokalt format
+            });
+
+            displayPosts();
+            document.getElementById('authorName').value = '';
+            document.getElementById('postContent').value = '';
+        }
+
+        function displayPosts() {
+            const container = document.getElementById('postsContainer'); // const betyder att variabeln inte kan tilldelas om (men elementets egenskaper kan ändras)
+            container.innerHTML = '<h2>Senaste inläggen</h2>';
+            
+            if (posts.length === 0) {
+                container.innerHTML += '<p>Inga inlägg ännu. Var den första att skriva något!</p>';
+                return;
+            }
+
+            posts.forEach(post => {
+                container.innerHTML += `
+                    <div class="post">
+                        <div class="author">${post.author}</div>
+                        <div>${post.content}</div>
+                        <div class="date">${post.date}</div>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>

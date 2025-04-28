@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Days - Hem</title>
+    <style>
+        body {
+            background-image: url(unsplash.jpg);
+            
+            font-family: Arial;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin-right: 15px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #3498db;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 3px solid black;
+            max-width: 300px;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">7Days</div>
+    
+    <nav>
+        <a href="first.html">Hem</a>
+        <a href="about.html">Om oss</a>
+        <a href="forum.html">Forum</a>
+    </nav>
+
+    <script>
+        document.write(`
+            <h1>Välkommen till 7Days</h1>
+            <p>Din plattform för balanserad vardag och personlig utveckling. Här hittar du verktyg och resurser för att skapa positiva vanor.</p>
+            
+            <h2>Populära resurser</h2>
+            <ul>
+                <li>7-dagars utmaningar</li>
+                <li>Personlig målspårning</li>
+                <li>Expert rådgivning</li>
+                <li>Kostschema</li>
+            </ul>
+            
+            <div>
+                <h3>Skapa konto</h3>
+                <input type="text" id="firstName" placeholder="Förnamn">
+                <input type="text" id="lastName" placeholder="Efternamn">
+                <input type="text" id="address" placeholder="Adress">
+                <button onclick="showPopup()">Skapa konto</button>
+            </div>
+            
+            <div class="popup" id="popup"> 
+                <h3>Konto skapat!</h3>
+                <p id="popupText"></p>
+                <button onclick="hidePopup()">OK</button>
+            </div>
+        `);
+
+        function showPopup() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const address = document.getElementById('address').value.trim();
+            
+            if (!firstName || !lastName || !address) {
+                alert('Vänligen fyll i alla fält!');
+                return;
+            }
+            
+            // Rensa fälten
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('address').value = '';
+            
+            // Visa popup med meddelande
+            document.getElementById('popupText').textContent = `Tack ${firstName}! Ditt konto är skapat.`;
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 7Days. Alla rättigheter förbehållna.</p>
+    </footer>
+</body>
+</html>
